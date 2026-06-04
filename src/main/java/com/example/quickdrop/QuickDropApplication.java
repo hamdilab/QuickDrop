@@ -10,7 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan(basePackages = {"Models"})
 @EnableJpaRepositories(basePackages = {"Repositories"})
-@ComponentScan(basePackages = {"com.example.quickdrop", "Controllers", "Service", "Repositories"})@EnableDiscoveryClient
+@ComponentScan(basePackages = {"com.example.quickdrop", "Controllers", "Service", "Repositories"})
+@EnableDiscoveryClient
 public class QuickDropApplication {
 
     public static void main(String[] args) {
