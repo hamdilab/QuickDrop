@@ -6,6 +6,7 @@ import Repositories.DeliveryRepository;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DeliveryService {
@@ -45,5 +46,11 @@ public class DeliveryService {
         }
 
         return deliveryRepository.save(delivery);
+    }
+
+
+    // AJOUTE CETTE MÉTHODE ICI :
+    public Optional<Delivery> findById(Long id) {
+        return deliveryRepository.findById(id);
     }
 }

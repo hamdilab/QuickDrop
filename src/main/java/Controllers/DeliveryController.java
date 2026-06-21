@@ -3,6 +3,7 @@ package Controllers;
 import Models.Delivery;
 import Models.DeliveryStatus;
 import Service.DeliveryService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Delivery")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DeliveryController {
 
     private final DeliveryService deliveryService;
@@ -38,5 +40,13 @@ public class DeliveryController {
     @PutMapping("/{id}/status")
     public ResponseEntity<Delivery> updateStatus(@PathVariable Long id, @RequestParam DeliveryStatus status) {
         return ResponseEntity.ok(deliveryService.updateStatus(id, status));
+    }
+
+    // GET : http://localhost:8081/Delivery/{id}
+    @GetMapping("/{id}")
+    public ResponseEntity<Delivery> getDeliveryById(@PathVariable Long id) {
+        return deliveryService.findById(id) // Assure-toi que cette méthode existe dans ton Service
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }
